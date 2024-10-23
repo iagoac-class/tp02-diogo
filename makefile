@@ -4,10 +4,7 @@
 PROJ_NAME=arvores
 
 # Arquivos .c
-C_SOURCE=$(wildcard *.c)
-
-# Arquivos .h
-H_SOURCE=$(wildcard *.h)
+C_SOURCE=arvores.c funcoes.c
 
 # Arquivos objeto
 OBJ=$(C_SOURCE:.c=.o)
@@ -16,9 +13,9 @@ OBJ=$(C_SOURCE:.c=.o)
 CC=gcc
 
 # Flags (opções) para o compilador
-CC_FLAGS=-c         \
-         -Wall      \
-		 -g         \
+CC_FLAGS=-c         \\
+         -Wall      \\
+         -g         \\
          -pedantic
 
 #########################
@@ -29,10 +26,7 @@ all: $(PROJ_NAME)
 $(PROJ_NAME): $(OBJ)
 	$(CC) -o $@ $^
 
-%.o: %.c %.h
-	$(CC) -o $@ $< $(CC_FLAGS)
-
-main.o: main.c $(H_SOURCE)
+%.o: %.c
 	$(CC) -o $@ $< $(CC_FLAGS)
 
 clean:
